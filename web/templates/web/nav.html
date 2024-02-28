@@ -11,6 +11,10 @@
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
 
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'web:register' %}">Register</a>
+          </li>
+
           {% if user.is_authenticated %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'web:logout' %}">Logout</a>
