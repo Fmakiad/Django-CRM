@@ -10,17 +10,20 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
-
+          
+          {% comment %} User registration {% endcomment %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'web:register' %}">Register</a>
           </li>
 
+          {% comment %} User logout {% endcomment %}
           {% if user.is_authenticated %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'web:logout' %}">Logout</a>
           </li>
-
           {% else %}
+
+          {% comment %} User Login {% endcomment %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'web:index' %}">Login</a>
           </li>
