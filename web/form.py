@@ -1,9 +1,9 @@
-from django.contrib.auth.forms import UserChangeForm
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms 
 
 
-class SignUpFrom(UserChangeForm):
+class SignUpForm(UserCreationForm):
     first_name = forms.CharField(label="", max_length=50, widget=forms.TextInput(attrs= {'placeholder':'First name'}))
 
     last_name = forms.CharField(label="", max_length=50, widget=forms.TextInput(attrs= {'placeholder':'Last name'}))
@@ -12,23 +12,33 @@ class SignUpFrom(UserChangeForm):
 
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email', 'password', 'password1')
+        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')
 
     def __init__(self, *args, **kwargs):
-        super(SignUpFrom, self).__init__(*args, **kwargs)
-        self.fields['username'].widget.attr['class'] = 'form-control'
-        self.fields['username'].widget.attr['placeholder'] = 'Username'
+        super().__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs['class'] = 'form-control'
+        self.fields['username'].widget.attrs['placeholder'] = 'Username' 
         self.fields['username'].label = ''
-        self.fields['username'].help_text = ''
+        self.fields['username'].help_text = '<span class="from-text text-muted small">'
 
-        self.fields['password1'].widget.attr['class': 'form-control']
-        self.fields['password1'].widget.attr['placeholder': 'password']
+        self.fields['first_name'].widget.attrs['class'] = 'form-control'
+        self.fields['first_name'].widget.attrs['placeholder'] = 'First name' 
+        self.fields['first_name'].label = ''
+        self.fields['first_name'].help_text = '<span class="from-text text-muted small">'
+
+        self.fields['last_name'].widget.attrs['class'] = 'form-control'
+        self.fields['last_name'].widget.attrs['placeholder'] = 'Last name' 
+        self.fields['last_name'].label = ''
+        self.fields['last_name'].help_text = '<span class="from-text text-muted small">'
+
+        self.fields['password1'].widget.attrs['class'] = 'form-control'
+        self.fields['password1'].widget.attrs['placeholder'] =  'Password'
         self.fields['password1'].label = ''
-        self.fields['password1'].help_text = '<span class="from-text text-muted small"> <ul> <li> Your password can\'t be too similato your personal information.</li> <li> Your password must contain atleast 8 characters.</li> <li> Your password can\'t be commonly used password.</li> <li> Your passowrd can\'t be entirely numeric. </li></ul> '
+        self.fields['password1'].help_text = '<span class="from-text text-muted small"> <ul> <li> Your password can\'t be too similato your personal information.</li> <li> Your password must contain atleast 8 characters.</li> <li> Your password can\'t be a commonly used password.</li> <li> Your passowrd can\'t be entirely numeric. </li></ul> '
 
-        self.fields['password2'].widget.attr['class': 'form-control']
-        self.fields['password2'].widget.attr['placeholder': 'password2']
+        self.fields['password2'].widget.attrs['class'] =  'form-control'
+        self.fields['password2'].widget.attrs['placeholder'] = 'Confirm password'
         self.fields['password2'].label = ''
-        self.fields['password2'].help_text = '<span class="from-text text-muted small"> <ul> <li> Your password can\'t be too similato your personal information.</li> <li> Your password must contain atleast 8 characters.</li> <li> Your password can\'t be commonly used password.</li> <li> Your passowrd can\'t be entirely numeric. </li></ul> '
+        self.fields['password2'].help_text = '<span class="from-text text-muted small">'
             
 
