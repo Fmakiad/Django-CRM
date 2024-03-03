@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from . form import SignUpForm
 from .models import Record
+from .form import AddRecord
 
 def index(request):
     records = Record.objects.all()
@@ -71,4 +72,32 @@ def delete_record(request, pk):
         return redirect('web:index')
     else:
         messages.success(request, 'You must be logged in to delete this record.')
+        return redirect('web:index')
+    
+
+# Add record
+def add_record(request):
+    form = AddRecord(request.POST or None)
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            form.save()
+            messages.success(request, 'Record has added...')
+            return redirect('web:index')
+        return render(request, 'web/add.html', {'form':form})
+    else:
+        messages.success(request, 'YOu must be logged in...')
+        return redirect('web:index')
+
+# update user record 
+def update(request, pk):
+    if request.user.is_authenticated:
+       current_record = Record.objects.get(id=pk)
+       form = AddRecord(request.POST or None, instance=current_record)
+       if form.is_valid():
+            form.save()
+            messages.success(request, 'Update successfully')
+            return redirect('web:update')
+       return render(request, 'web/update.html', {'form':form})
+    else:
+        messages.success(request, 'You must be logged in..')
         return redirect('web:index')
