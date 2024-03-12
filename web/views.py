@@ -20,7 +20,7 @@ def index(request):
             messages.success(request, 'Login successfully')
             return redirect('web:index')
         else:
-            messages.success(request, 'An error occured, please try again')
+            messages.success(request, 'Incorrect username or password, please try again')
             return redirect('web:index')
 
     else:
@@ -96,8 +96,8 @@ def update(request, pk):
        if form.is_valid():
             form.save()
             messages.success(request, 'Update successfully')
-            return redirect('web:update')
+            return redirect('web:index')
        return render(request, 'web/update.html', {'form':form})
     else:
         messages.success(request, 'You must be logged in..')
-        return redirect('web:index')
+        return redirect('web:login')

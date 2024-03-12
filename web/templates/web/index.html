@@ -35,7 +35,12 @@
 </table>
 
 {%else%}
-<h2>Login</h2>
+
+<div class="row mx-auto" style="width:100%" >
+
+<div class="col-md-6 offset-md-3">
+
+  <h2 class="text-center text-secondary">Login</h2>
 <form method="POST" action="{% url 'web:index' %}">
   {% csrf_token %}
   <form>
@@ -57,8 +62,12 @@
         required
       />
     </div>
-    <button type="submit" class="btn btn-success">Submit</button>
+    <button type="submit" class="btn btn-success" style="width: 100%;">Submit</button>
   </form>
+
+</div>
+</div>
+
 
   {%endif%} {%endblock%}
 </form>
