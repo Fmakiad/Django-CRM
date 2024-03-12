@@ -81,11 +81,11 @@ def add_record(request):
     if request.user.is_authenticated:
         if request.method == 'POST':
             form.save()
-            messages.success(request, 'Record has added...')
+            messages.success(request, 'Record has be added')
             return redirect('web:index')
         return render(request, 'web/add.html', {'form':form})
     else:
-        messages.success(request, 'YOu must be logged in...')
+        messages.success(request, 'YOu must be logged in')
         return redirect('web:index')
 
 # update user record 

@@ -1,21 +1,22 @@
-{%extends 'web/base.html'%} 
-{%block content %}
+{%extends 'web/base.html'%} {%block content %}
 
 <div class="card">
-    <div class="card-header text-white bg-secondary">
-      {{ cust_record.first_name}} {{cust_record.last_name}}
-    </div>
-    <div class="card-body">
-      <p><strong>Email:</strong> {{cust_record.email}}</p>
-      <p><strong>Phone Number:</strong> {{cust_record.phone}}</p>
-      <p><strong>Address:</strong> {{cust_record.address}}</p>
-      <p><strong>City:</strong> {{cust_record.city}}</p>
-      <p><strong>State:</strong> {{cust_record.state}}</p>
-      <p><strong>Zidcode:</strong> {{cust_record.zipcode}}</p>
-    </div>
+  <div class="card-header text-white bg-secondary">
+    {{ cust_record.first_name}} {{cust_record.last_name}}
   </div>
-  <a href="{% url 'web:index' %}" class="btn mt-2 btn-primary">Back</a>
-  <a href="{% url 'web:delete' cust_record.id %}" class="btn mt-2 btn-danger">Delete</a>
-
-
+  <div class="card-body">
+    <p><strong>Email:</strong> {{cust_record.email}}</p>
+    <p><strong>Phone Number:</strong> {{cust_record.phone}}</p>
+    <p><strong>Address:</strong> {{cust_record.address}}</p>
+    <p><strong>City:</strong> {{cust_record.city}}</p>
+    <p><strong>State:</strong> {{cust_record.state}}</p>
+    <p><strong>Zidcode:</strong> {{cust_record.zipcode}}</p>
+  </div>
+</div>
+<a href="{% url 'web:update' cust_record.id %}" class="btn mt-2 btn-primary"
+  >Update</a
+>
+<a href="{% url 'web:delete' cust_record.id %}" class="btn mt-2 btn-danger"
+  >Delete</a
+>
 {%endblock%}

@@ -1,27 +1,23 @@
-{% extends "web/base.html" %}
+{% extends "web/base.html" %} {% block content %}
+<div class="col-md-6 offset-md-3 p-4 mb-3 rounded-2 border">
+  <h3 class="text-success text-center pb-2">Register User</h3>
 
-
-{% block content %}
-<div class="col-md-6 offset-md-3">
-<h3>Register User</h3>
-
-    <form method="POST" action="" >
-    {% csrf_token %}
-    {% if form.errors %}
-        <div class="alert alert-dark alert-dismissible fade show" role="alert">
-            Your form has errors!
-            {% for field in form %}
-                {% if field.errors %}
-                    {{field.errors}}
-                {%endif%}
-            {%endfor%}
-        <strong class="text-success">{{field}}</strong> 
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-    {%endif%}
-    {{form.as_p}}
-        <button type="submit" class="btn btn-success">Register</button> 
-    </form>
+  <form class="mb-4" method="POST">
+    {% csrf_token %} {% if form.errors %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      Your form has errors! {% for field in form %} {% if field.errors %}
+      {{field.errors}} {%endif%} {%endfor%}
+      <strong class="text-success">{{field}}</strong>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+    {%endif%} {{form.as_p}}
+    <button type="submit" class="btn btn-success">Register</button>
+  </form>
 </div>
 
 {% endblock content %}

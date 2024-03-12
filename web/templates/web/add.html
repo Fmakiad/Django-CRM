@@ -1,0 +1,15 @@
+{% extends "web/base.html" %}
+
+{% block content %}
+<div class="col-md-6 offset-md-3">
+<h3 class="text-secondary">Add Customer</h3>
+
+<form method="POST" action="{% url 'web:add' %}">
+    {% csrf_token %}
+    <form>
+        {{form.as_p}}
+        <button type="submit" class="btn btn-success">Submit</button>
+        <a href="{% url 'web:index' %}" class="btn btn-primary">Back</a>
+    </form>
+</div>
+{% endblock content %}

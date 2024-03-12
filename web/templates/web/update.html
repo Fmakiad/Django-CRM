@@ -1,0 +1,13 @@
+{% extends "web/base.html" %} {% block content %}
+<div class="col-md-6 offset-md-3">
+  <h3>Update Record</h3>
+
+  <form method="POST">
+    {% csrf_token %}
+    
+    <form> {{form.as_p}}
+    <button type="submit" class="btn btn-success">Update</button>
+    <a href="{% url 'web:index' %}" class="btn btn-primary">Back</a> 
+  </form>
+</div>
+{% endblock content %}
