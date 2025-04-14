@@ -99,5 +99,5 @@ def update(request, pk):
             return redirect('web:index')
        return render(request, 'web/update.html', {'form':form})
     else:
-        messages.success(request, 'You must be logged in..')
+        messages.error(request, 'You must be logged in..')
         return redirect('web:login')
